@@ -6,13 +6,15 @@ use App\Interfaces\PromoteStrategyInterface;
 
 class Ticket
 {
-    private PromoteStrategyInterface $_promoteStrategy;
+    private ?PromoteStrategyInterface $_promoteStrategy;
     private ?float $_price;
     private ?string $_name;
 
-    public function __construct()
+    public function __construct(PromoteStrategyInterface $promoteStrategy = null, ?float $price = null, ?string $name = null)
     {
-        // 
+        $this->_promoteStrategy = $promoteStrategy;
+        $this->_price = $price;
+        $this->_name = $name;
     }
 
     public function getPromoteStrategy(): PromoteStrategyInterface

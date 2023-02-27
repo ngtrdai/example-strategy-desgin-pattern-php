@@ -45,13 +45,49 @@ php src/main.php
 ```
 
 ## Usage
+
+### No discount
 ```php
-$context = new Context(new ConcreteStrategyA());
-$context->execute();
+// $ticket = new Ticket(new NoDiscountStrategy());
+// or
+$ticket = new Ticket();
+$ticket->setPromoteStrategy(new NoDiscountStrategy());
+$ticket->setName('Strategy A');
+$ticket->setPrice(100);
+$promoted = $ticket->getPromotedPrice();
+echo "{$ticket->getName()} price: {$ticket->getPrice()} promoted price: {$promoted}" . PHP_EOL;
 ```
 
-## Output
+### Output
 ```bash
-Strategy A
+Ticket A price: 100 promoted price: 100
+```
+
+### Half discount
+```php
+// $ticket = new Ticket(new HalfDiscountStrategy());
+// or
+$ticket = new Ticket();
+$ticket->setPromoteStrategy(new HalfDiscountStrategy());
+$ticket->setName('Strategy B');
+$ticket->setPrice(100);
+$promoted = $ticket->getPromotedPrice();
+echo "{$ticket->getName()} price: {$ticket->getPrice()} promoted price: {$promoted}" . PHP_EOL;
+```
+
+### Output
+```bash
+Ticket B price: 100 promoted price: 50
+```
+
+### Quarter discount
+```php
+// $ticket = new Ticket(new QuarterDiscountStrategy());
+// or
+$ticket = new Ticket();
+$ticket->setName('Strategy C');
+$ticket->setPrice(100);
+$promoted = $ticket->getPromotedPrice();
+echo "{$ticket->getName()} price: {$ticket->getPrice()} promoted price: {$promoted}" . PHP_EOL;
 ```
 
